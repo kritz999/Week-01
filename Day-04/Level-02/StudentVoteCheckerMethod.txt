@@ -1,0 +1,44 @@
+import java.util.Scanner;
+
+public class StudentVoteCheckerMethod {
+
+    // Method to check if a student can vote
+    public static boolean canStudentVote(int age) {
+        if (age < 0) {
+            // Invalid age
+            return false;
+        }
+        // Check if the student is eligible to vote
+        return age >= 18;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Array to store the age of 10 students
+        int[] studentAges = new int[10];
+
+        // Loop to take user input for the age of 10 students
+        for (int i = 0; i < 10; i++) {
+            System.out.print("Enter the age of student " + (i + 1) + ": ");
+            studentAges[i] = scanner.nextInt();
+        }
+
+        // Check voting eligibility for each student
+        for (int i = 0; i < 10; i++) {
+            int age = studentAges[i];
+            boolean canVote = canStudentVote(age);
+
+            // Display the result
+            if (age < 0) {
+                System.out.println("Student " + (i + 1) + " entered an invalid age (" + age + ").");
+            } else if (canVote) {
+                System.out.println("Student " + (i + 1) + " with age " + age + " is eligible to vote.");
+            } else {
+                System.out.println("Student " + (i + 1) + " with age " + age + " is NOT eligible to vote.");
+            }
+        }
+
+        scanner.close();
+    }
+}
